@@ -29,4 +29,10 @@ public class Constantes {
 	
 	public static String VALOR_CODIGO_ERROR_DECIMAL = "4";
 	public static String VALOR_MENSAJE_ERROR_DECIMAL= "Ingresar monto válido";
+	
+	public static String VALOR_CODIGO_REGISTRO_NO_EXISTE = "1";
+	public static String VALOR_MENSAJE_REGISTRO_NO_EXISTE = "Producto no encontrado";
+	
+	public static String VALOR_CODIGO_FECHA_NO_VALIDA = "1";
+	public static String VALOR_MENSAJE_FECHA_NO_VALIDA = "Rango de Fechas Inválidas,Verificar";
 }

@@ -39,7 +39,7 @@ public class ProductoService implements Serializable {
 
 				Map<String, String> result = productoRepository.registrarProducto(idTransaccion, req.getProducto());
 
-				if (result.get(Constantes.CODIGO_GENERADO).toString().equals(Constantes.CODIGO_OK)) {
+				if (result.get(Constantes.CODIGO_RESPUESTA).toString().equals(Constantes.CODIGO_OK)) {
 					response.setCodigoGenerado(Integer.valueOf(result.get(Constantes.CODIGO_GENERADO).toString()));
 					response.setCodigoRespuesta(result.get(Constantes.CODIGO_RESPUESTA).toString());
 					response.setMensajeRespuesta(result.get(Constantes.MENSAJE_RESPUESTA).toString());

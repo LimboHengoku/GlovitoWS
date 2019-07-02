@@ -10,8 +10,11 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import pe.com.glovo.soap.service.PagosService;
+import pe.com.glovo.soap.service.ProductoService;
 import pe.com.glovo.soap.types.ListarTipoPagoRequestType;
 import pe.com.glovo.soap.types.ListarTipoPagoResponseType;
+import pe.com.glovo.soap.types.RegistraOfertaRequestType;
+import pe.com.glovo.soap.types.RegistraOfertaResponseType;
 import pe.com.glovo.soap.types.RegistraPagoRequestType;
 import pe.com.glovo.soap.types.RegistraPagoResponseType;
 import pe.com.glovo.soap.types.RegistraTipoPagoRequestType;
@@ -22,16 +25,20 @@ public class GlovoEndPoint {
 
 	public static final String NAMESPACE_URI = "http://glovo.com.pe/GlovoSOAP/types";
 
+	@Autowired
 	private PagosService pagosService;
+	
+	@Autowired
+	private ProductoService productoService;
 
 	public GlovoEndPoint() {
 
 	}
 
-	@Autowired
-	public GlovoEndPoint(PagosService pagosService) {
-		this.pagosService = pagosService;
-	}
+//	@Autowired
+//	public GlovoEndPoint(PagosService pagosService) {
+//		this.pagosService = pagosService;
+//	}
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "registraTipoPagoRequest")
 	@ResponsePayload
@@ -76,5 +83,18 @@ public class GlovoEndPoint {
 		
 		return response;
 	}
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "registraOfertaRequest")
+	@ResponsePayload
+	public RegistraOfertaResponseType registrarOferta(@RequestPayload RegistraOfertaRequestType req) {
+		
+		SimpleDateFormat format = new SimpleDateFormat("ddMMyyyyhhmmss");
+		Date fecha = new Date();
+		String idTransaccion = format.format(fecha);
+		
+		RegistraOfertaResponseType response = productoService.registraOferta(idTransaccion, req);
+	
+		return response;
+	} 
 
 }

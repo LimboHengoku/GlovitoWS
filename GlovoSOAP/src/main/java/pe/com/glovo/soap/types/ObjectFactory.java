@@ -58,4 +58,20 @@ public class ObjectFactory {
 		return new TipoPagoRequestType();
 	}
 
+	public RegistraOfertaRequestType createRegistraOfertaRequestType() {
+		return new RegistraOfertaRequestType();
+	}
+
+	public RegistraOfertaResponseType createRegistraOfertaResponseType() {
+		return new RegistraOfertaResponseType();
+	}
+
+	public OfertaType createOfertaType() {
+		return new OfertaType();
+	}
+
+	public ProductoType createProductoType() {
+		return new ProductoType();
+	}
+
 }

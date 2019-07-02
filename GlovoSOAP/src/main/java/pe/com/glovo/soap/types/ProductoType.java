@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "producto", propOrder = { "nombreProducto", "precioUnidad", "estado"
+@XmlType(name = "producto", propOrder = {"idProducto","nombreProducto", "precioUnidad", "estado"
 			, "usuarioRegistro", "fechaRegistro","usuarioModificacion","fechaModificacion" })
 public class ProductoType {
 
@@ -20,7 +20,7 @@ public class ProductoType {
 	protected String nombreProducto;
 
 	@XmlElement
-	protected Long precioUnidad;
+	protected double precioUnidad;
 
 	@XmlElement
 	protected String estado;
@@ -53,11 +53,11 @@ public class ProductoType {
 		this.nombreProducto = nombreProducto;
 	}
 
-	public Long getPrecioUnidad() {
+	public double getPrecioUnidad() {
 		return precioUnidad;
 	}
 
-	public void setPrecioUnidad(Long precioUnidad) {
+	public void setPrecioUnidad(double precioUnidad) {
 		this.precioUnidad = precioUnidad;
 	}
 

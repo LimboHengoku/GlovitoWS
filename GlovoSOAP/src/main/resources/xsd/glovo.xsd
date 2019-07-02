@@ -52,6 +52,23 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="registraOfertaRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="oferta" type="tns:oferta" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="registraOfertaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="genericoResponse"
+					type="tns:genericoResponse" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
 	<xs:complexType name="tipoPagoType">
 		<xs:sequence>
 			<xs:element name="idTipoPago" type="xs:int" />
@@ -66,6 +83,33 @@
 			<xs:element name="fechaPago" type="xs:date" />
 			<xs:element name="montoApagar" type="xs:decimal" />
 			<xs:element name="estado" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="producto">
+		<xs:sequence>
+			<xs:element name="idProducto" type="xs:int" />
+			<xs:element name="nombreProducto" type="xs:string" />
+			<xs:element name="precioUnidad" type="xs:decimal" />
+			<xs:element name="estado" type="xs:string" />
+			<xs:element name="usuarioRegistro" type="xs:string" />
+			<xs:element name="fechaRegistro" type="xs:date" />
+			<xs:element name="usuarioModificacion" type="xs:string" />
+			<xs:element name="fechaModificacion" type="xs:date" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="oferta">
+		<xs:sequence>
+			<xs:element name="idOferta" type="xs:int" />
+			<xs:element name="producto" type="tns:producto" />
+			<xs:element name="fechaInicioOferta" type="xs:date" />
+			<xs:element name="fechaFinOferta" type="xs:date" />
+			<xs:element name="estado" type="xs:string" />
+			<xs:element name="fechaRegistro" type="xs:date" />
+			<xs:element name="usuarioModificacion" type="xs:string" />
+			<xs:element name="fechaMod" type="xs:date" />
+			<xs:element name="usuarioMod" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
 

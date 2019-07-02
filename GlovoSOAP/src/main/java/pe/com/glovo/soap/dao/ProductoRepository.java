@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import pe.com.glovo.soap.entidades.Ofertas;
+import pe.com.glovo.soap.entidades.Producto;
 import pe.com.glovo.soap.util.Constantes;
 
 @Repository(value = "productoRespository")
@@ -20,7 +21,7 @@ import pe.com.glovo.soap.util.Constantes;
 public class ProductoRepository implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -37,7 +38,7 @@ public class ProductoRepository implements Serializable {
 			} else {
 				sql = sql + "from Ofertas o";
 			}
-			
+
 			lista = em.createQuery(sql).getResultList();
 
 		} catch (Exception e) {
@@ -46,9 +47,9 @@ public class ProductoRepository implements Serializable {
 		return lista;
 
 	}
-	
-	public Map<String, String> registrarOferta(String idTransaccion,Ofertas o){
-		
+
+	public Map<String, String> registrarOferta(String idTransaccion, Ofertas o) {
+
 		Map<String, String> out = new HashMap<>();
 
 		try {
@@ -65,7 +66,31 @@ public class ProductoRepository implements Serializable {
 		}
 
 		return out;
-		
+
+	}
+
+	public List<Producto> buscaProducto(String idTransaccion, int codProd) {
+
+		List<Producto> lista = new ArrayList<>();
+
+		try {
+
+			String sql = "";
+
+			if (codProd!=0) {
+				sql = sql + "from Producto p where p.idProducto =" + codProd;
+			} else {
+				sql = sql + "from Producto p";
+			}
+
+			lista = em.createQuery(sql).getResultList();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+
 	}
 
 }
