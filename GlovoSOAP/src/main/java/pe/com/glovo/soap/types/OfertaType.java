@@ -9,35 +9,38 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "oferta", propOrder = { "idOferta", "producto", "fechaInicioOferta", "fechaFinOferta", "estado",
-		"fechaRegistro", "usuarioRegistro", "fechaMod", "usuarioMod" })
+		"fechaRegistro", "usuarioRegistro", "fechaMod", "usuarioMod","descripcionOferta" })
 public class OfertaType {
 
 	@XmlElement
 	protected Integer idOferta;
-	
+
 	@XmlElement
 	protected ProductoType producto;
-	
+
 	@XmlElement
 	protected Date fechaInicioOferta;
-	
+
 	@XmlElement
 	protected Date fechaFinOferta;
-	
+
 	@XmlElement
 	protected String estado;
-	
+
 	@XmlElement
 	protected Date fechaRegistro;
-	
+
 	@XmlElement
 	protected String usuarioRegistro;
-	
+
 	@XmlElement
 	protected Date fechaMod;
-	
+
 	@XmlElement
 	protected String usuarioMod;
+
+	@XmlElement
+	protected String descripcionOferta;
 
 	public Integer getIdOferta() {
 		return idOferta;
@@ -109,6 +112,14 @@ public class OfertaType {
 
 	public void setUsuarioMod(String usuarioMod) {
 		this.usuarioMod = usuarioMod;
+	}
+
+	public String getDescripcionOferta() {
+		return descripcionOferta;
+	}
+
+	public void setDescripcionOferta(String descripcionOferta) {
+		this.descripcionOferta = descripcionOferta;
 	}
 
 }

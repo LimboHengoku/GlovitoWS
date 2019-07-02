@@ -31,12 +31,14 @@ public class Ofertas implements java.io.Serializable {
 	private String usuarioRegistro;
 	private Date fechaMod;
 	private String usuarioMod;
+	private String descripcionOferta;
 
 	public Ofertas() {
 	}
 
-	public Ofertas(Producto producto, Date fechaInicioOferta, Date fechaFinOferta, String estado, Date fechaRegistro,
-			String usuarioRegistro, Date fechaMod, String usuarioMod) {
+	public Ofertas(Integer idOferta, Producto producto, Date fechaInicioOferta, Date fechaFinOferta, String estado,
+			Date fechaRegistro, String usuarioRegistro, Date fechaMod, String usuarioMod, String descripcionOferta) {
+		this.idOferta = idOferta;
 		this.producto = producto;
 		this.fechaInicioOferta = fechaInicioOferta;
 		this.fechaFinOferta = fechaFinOferta;
@@ -45,6 +47,7 @@ public class Ofertas implements java.io.Serializable {
 		this.usuarioRegistro = usuarioRegistro;
 		this.fechaMod = fechaMod;
 		this.usuarioMod = usuarioMod;
+		this.descripcionOferta = descripcionOferta;
 	}
 
 	@Id
@@ -134,6 +137,15 @@ public class Ofertas implements java.io.Serializable {
 
 	public void setUsuarioMod(String usuarioMod) {
 		this.usuarioMod = usuarioMod;
+	}
+
+	@Column(name = "descripcionOferta", length = 100)
+	public String getDescripcionOferta() {
+		return descripcionOferta;
+	}
+
+	public void setDescripcionOferta(String descripcionOferta) {
+		this.descripcionOferta = descripcionOferta;
 	}
 
 }

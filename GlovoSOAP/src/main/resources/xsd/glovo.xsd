@@ -11,7 +11,26 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="listaTipoPago" type="tns:tipoPagoType"
-					maxOccurs="unbounded" />
+					minOccurs="1" maxOccurs="unbounded" />
+				<xs:element name="genericoResponse"
+					type="tns:genericoResponse" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="listarOfertasRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="nombreOferta" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="listarOfertasResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="listaOfertas" type="tns:oferta"
+					 maxOccurs="unbounded" minOccurs="1"/>
 				<xs:element name="genericoResponse"
 					type="tns:genericoResponse" />
 			</xs:sequence>
@@ -110,6 +129,7 @@
 			<xs:element name="usuarioModificacion" type="xs:string" />
 			<xs:element name="fechaMod" type="xs:date" />
 			<xs:element name="usuarioMod" type="xs:string" />
+			<xs:element name="descripcionOferta" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
 

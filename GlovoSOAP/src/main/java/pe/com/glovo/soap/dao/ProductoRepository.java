@@ -77,7 +77,7 @@ public class ProductoRepository implements Serializable {
 
 			String sql = "";
 
-			if (codProd!=0) {
+			if (codProd != 0) {
 				sql = sql + "from Producto p where p.idProducto =" + codProd;
 			} else {
 				sql = sql + "from Producto p";
@@ -91,6 +91,28 @@ public class ProductoRepository implements Serializable {
 
 		return lista;
 
+	}
+
+	public List<Ofertas> getOfertas(String idTransaccion, String nombeOferta) {
+		List<Ofertas> lista = new ArrayList<>();
+
+		try {
+
+			String sql = "";
+			
+			if(!nombeOferta.isEmpty() || !nombeOferta.equals("")) {
+				sql = sql + "from Ofertas o where o. = '" +nombeOferta + "'";
+			}else {
+				sql = sql + "from Ofertas o ";
+			}
+			
+			lista = em.createQuery(sql).getResultList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return lista;
 	}
 
 }

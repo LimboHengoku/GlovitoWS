@@ -11,6 +11,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import pe.com.glovo.soap.service.PagosService;
 import pe.com.glovo.soap.service.ProductoService;
+import pe.com.glovo.soap.types.ListarOfertasRequestType;
+import pe.com.glovo.soap.types.ListarOfertasResponseType;
 import pe.com.glovo.soap.types.ListarTipoPagoRequestType;
 import pe.com.glovo.soap.types.ListarTipoPagoResponseType;
 import pe.com.glovo.soap.types.RegistraOfertaRequestType;
@@ -27,7 +29,7 @@ public class GlovoEndPoint {
 
 	@Autowired
 	private PagosService pagosService;
-	
+
 	@Autowired
 	private ProductoService productoService;
 
@@ -69,32 +71,45 @@ public class GlovoEndPoint {
 		return response;
 
 	}
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "registraPagoRequest")
 	@ResponsePayload
 	public RegistraPagoResponseType registrarPago(@RequestPayload RegistraPagoRequestType req) {
-		
 
 		SimpleDateFormat format = new SimpleDateFormat("ddMMyyyyhhmmss");
 		Date fecha = new Date();
 		String idTransaccion = format.format(fecha);
-		
+
 		RegistraPagoResponseType response = pagosService.registrarPago(idTransaccion, req);
-		
+
 		return response;
 	}
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "registraOfertaRequest")
 	@ResponsePayload
 	public RegistraOfertaResponseType registrarOferta(@RequestPayload RegistraOfertaRequestType req) {
-		
+
 		SimpleDateFormat format = new SimpleDateFormat("ddMMyyyyhhmmss");
 		Date fecha = new Date();
 		String idTransaccion = format.format(fecha);
-		
+
 		RegistraOfertaResponseType response = productoService.registraOferta(idTransaccion, req);
-	
+
 		return response;
-	} 
+	}
+
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "listarOfertasRequest")
+	@ResponsePayload
+	public ListarOfertasResponseType listarOfertas(@RequestPayload ListarOfertasRequestType req) {
+
+		SimpleDateFormat format = new SimpleDateFormat("ddMMyyyyhhmmss");
+		Date fecha = new Date();
+		String idTransaccion = format.format(fecha);
+
+		ListarOfertasResponseType response = productoService.buscarOfertas(idTransaccion, req);
+
+		return response;
+
+	}
 
 }
